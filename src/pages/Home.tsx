@@ -171,27 +171,8 @@ function Home() {
       {/* Games Section */}
       <section id="games" className="py-20 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-12">
+          <div className="mb-12">
             <h2 className="text-3xl font-bold">Our Games</h2>
-            <div className="flex items-center space-x-4">
-              <select 
-                className="bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
-                defaultValue="all"
-              >
-                <option value="all">All Games</option>
-                <option value="racing">Racing</option>
-                <option value="drift">Drift</option>
-                <option value="rally">Rally</option>
-              </select>
-              <select 
-                className="bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
-                defaultValue="newest"
-              >
-                <option value="newest">Newest</option>
-                <option value="popular">Most Popular</option>
-                <option value="rated">Top Rated</option>
-              </select>
-            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
