@@ -8,45 +8,65 @@ function Privacy() {
         
         <div className="space-y-8 text-gray-400">
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">1. Information We Collect</h2>
-            <p className="mb-4">We collect information that you provide directly to us, including:</p>
+            <h2 className="text-2xl font-bold text-white mb-4">1. No Data Collection</h2>
+            <p className="mb-4">At Street Racer, we are committed to your privacy. We do not:</p>
             <ul className="list-disc list-inside ml-4 space-y-2">
-              <li>Email address (if you subscribe to our newsletter)</li>
-              <li>Game progress and preferences</li>
-              <li>Browser type and version</li>
-              <li>Device information</li>
+              <li>Collect personal information</li>
+              <li>Track user behavior</li>
+              <li>Use cookies for tracking</li>
+              <li>Store any user data</li>
+              <li>Share information with third parties</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">2. How We Use Your Information</h2>
-            <p className="mb-4">We use the information we collect to:</p>
+            <h2 className="text-2xl font-bold text-white mb-4">2. Browser Storage</h2>
+            <p className="mb-4">Our games operate entirely within your browser:</p>
             <ul className="list-disc list-inside ml-4 space-y-2">
-              <li>Provide and improve our games</li>
-              <li>Send you updates and newsletters (if subscribed)</li>
-              <li>Analyze game performance and user behavior</li>
-              <li>Protect against fraud and abuse</li>
+              <li>Use only temporary browser storage for game functionality</li>
+              <li>Clear all data when you close your browser</li>
+              <li>Don't persist any information between sessions</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">3. Cookies and Tracking</h2>
-            <p>We use cookies and similar tracking technologies to track activity on our website and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.</p>
+            <h2 className="text-2xl font-bold text-white mb-4">3. Third-Party Content</h2>
+            <p>Our website may include:</p>
+            <ul className="list-disc list-inside ml-4 space-y-2">
+              <li>Embedded game frames from trusted gaming platforms</li>
+              <li>Images from secure content delivery networks</li>
+              <li>Standard web fonts and icons</li>
+            </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">4. Data Security</h2>
-            <p>We implement appropriate security measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.</p>
+            <h2 className="text-2xl font-bold text-white mb-4">4. Children's Privacy</h2>
+            <p>Our service:</p>
+            <ul className="list-disc list-inside ml-4 space-y-2">
+              <li>Is suitable for all ages</li>
+              <li>Doesn't collect any user information</li>
+              <li>Doesn't require account creation</li>
+              <li>Doesn't enable user-to-user communication</li>
+            </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">5. Changes to This Policy</h2>
-            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+            <h2 className="text-2xl font-bold text-white mb-4">5. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul className="list-disc list-inside ml-4 space-y-2">
+              <li>Access our services without providing personal information</li>
+              <li>Play our games anonymously</li>
+              <li>Clear your browser data at any time</li>
+            </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">6. Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, please contact us at privacy@streetracers.com</p>
+            <h2 className="text-2xl font-bold text-white mb-4">6. Updates to Policy</h2>
+            <p>Any changes to this privacy policy will be posted on this page with an updated revision date.</p>
+          </section>
+
+          <section className="border-t border-gray-800 pt-8 mt-12">
+            <p className="text-sm">Last updated: February 15, 2025</p>
           </section>
         </div>
       </div>

@@ -4,9 +4,6 @@ import {
   Rocket, 
   Flame, 
   Search, 
-  Facebook, 
-  Twitter, 
-  Instagram,
   ChevronRight,
   Menu,
   X,
@@ -16,6 +13,7 @@ import {
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import { Link } from 'react-router-dom';
+import { getAllPosts } from '../blog-posts';
 
 function Home() {
   const [selectedGame, setSelectedGame] = useState<number | null>(null);
@@ -24,31 +22,40 @@ function Home() {
 
   const games = [
     {
-      id: 1,
-      title: "Street Racer 2",
-      description: "Experience the thrill of urban racing with stunning graphics and realistic physics.",
-      icon: <Car className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?w=1600",
-      features: ["Browser-Based Gaming", "Intuitive Controls", "Multiple Tracks"],
-      iframe: '<iframe src="https://www.crazygames.com/embed/street-racer-2" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      id: 'racing-horizon',
+      title: 'Racing Horizon',
+      image: '/racing-horizon.jpg',
+      description: 'Navigate through heavy traffic, earn money for upgrades, and enjoy thrilling police chases in this 3D racing game.',
+      features: [
+        '4 Exciting Game Modes',
+        'Car Upgrades System',
+        'Realistic 3D Graphics',
+      ],
+      isNew: true,
     },
     {
-      id: 2,
-      title: "Street Racers Nitro Extreme",
-      description: "Push your limits with nitro-powered racing and extreme customization options.",
-      icon: <Rocket className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1600",
-      features: ["Nitro Boost System", "Multiple Cars", "Online Competition"],
-      iframe: '<iframe src="https://www.crazygames.com/embed/street-racers-nitro-extreme" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      id: 'turbo-racing-3',
+      title: 'Turbo Racing 3',
+      image: '/night-city-racing-cover.avif',
+      description: 'Race through the streets of Shanghai in this thrilling 3D racing game. Navigate through traffic and compete to be the best.',
+      features: [
+        'Shanghai City Racing',
+        'Traffic Navigation',
+        'Turbo Boost (X)',
+      ],
+      isNew: true,
     },
     {
-      id: 3,
-      title: "Night City Racing",
-      description: "Dominate the neon-lit streets in this action-packed racing experience.",
-      icon: <Flame className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1547744822-0a2892f8fa6d?w=1600",
-      features: ["Night Racing", "City Environment", "Arcade Style"],
-      iframe: '<iframe src="https://www.crazygames.com/embed/night-city-racing" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      id: 'buggy-racing',
+      title: 'Buggy Off-Road Racing',
+      image: '/buggf-off-load.webp',
+      description: 'Race through rugged terrains across Europe, USA, and Australia. Drive a high-powered buggy through treacherous tracks.',
+      features: [
+        'Multiple Global Tracks',
+        'Buggy Customization',
+        'Intense Off-Road Action',
+      ],
+      isNew: true,
     },
     {
       id: 4,
@@ -73,26 +80,7 @@ function Home() {
   const featuredGames = games.slice(0, 3); // 首页只显示前3个游戏
   const displayedGames = showAllGames ? games : featuredGames;
 
-  const blogPosts = [
-    {
-      title: "Next-Gen Racing Features Revealed",
-      date: "March 15, 2024",
-      image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=800",
-      category: "Development"
-    },
-    {
-      title: "Community Racing Event This Weekend",
-      date: "March 14, 2024",
-      image: "https://images.unsplash.com/photo-1541348263662-e068662d82af?w=800",
-      category: "Events"
-    },
-    {
-      title: "Car Customization Guide",
-      date: "March 13, 2024",
-      image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800",
-      category: "Guides"
-    }
-  ];
+  const blogPosts = getAllPosts().slice(0, 3); // 只获取最新的3篇文章
 
   // 处理全屏
   const handleFullscreen = () => {
@@ -180,11 +168,13 @@ function Home() {
               <div key={game.id} className="bg-gray-900 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
                 <div className="relative">
                   <img src={game.image} alt={game.title} className="w-full h-48 object-cover" />
-                  <div className="absolute top-2 right-2">
-                    <span className="bg-red-500 text-white px-2 py-1 rounded-full text-sm">
-                      New
-                    </span>
-                  </div>
+                  {game.isNew && (
+                    <div className="absolute top-2 right-2">
+                      <span className="bg-red-500 text-white px-2 py-1 rounded-full text-sm">
+                        New
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-4">
@@ -211,7 +201,8 @@ function Home() {
             ))}
           </div>
 
-          {!showAllGames && games.length > 3 && (
+          {/* 移除或注释掉 View More Games 按钮部分 */}
+          {/* {!showAllGames && games.length > 3 && (
             <div className="text-center mt-12">
               <button
                 onClick={() => setShowAllGames(true)}
@@ -221,14 +212,15 @@ function Home() {
                 <ChevronRight className="w-5 h-5 ml-2" />
               </button>
             </div>
-          )}
+          )} */}
         </div>
       </section>
 
       {/* Game Modal */}
       {selectedGame && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center">
-          <div className="bg-gray-800 w-full max-w-6xl rounded-lg overflow-hidden">
+          <div className="bg-gray-800 w-full h-full max-w-7xl max-h-[90vh] rounded-lg overflow-hidden flex flex-col">
+            {/* Header */}
             <div className="flex justify-between items-center p-4 border-b border-gray-700">
               <h3 className="text-xl font-bold text-white">
                 {games[selectedGame - 1].title}
@@ -236,56 +228,151 @@ function Home() {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={handleFullscreen}
-                  className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+                  className="p-2 hover:bg-gray-700 rounded-lg transition-colors group relative"
                 >
                   {isFullscreen ? (
-                    <Minimize2 className="w-5 h-5 text-gray-400" />
+                    <>
+                      <Minimize2 className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">
+                        Exit Fullscreen
+                      </span>
+                    </>
                   ) : (
-                    <Maximize2 className="w-5 h-5 text-gray-400" />
+                    <>
+                      <Maximize2 className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                      <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">
+                        Fullscreen
+                      </span>
+                    </>
                   )}
                 </button>
                 <button
                   onClick={() => setSelectedGame(null)}
-                  className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+                  className="p-2 hover:bg-gray-700 rounded-lg transition-colors group relative"
                 >
-                  <X className="w-5 h-5 text-gray-400" />
+                  <X className="w-5 h-5 text-gray-400 group-hover:text-white" />
+                  <span className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">
+                    Close
+                  </span>
                 </button>
               </div>
             </div>
-            <div 
-              id="game-container"
-              className="relative w-full"
-              style={{ height: '80vh' }}
-              dangerouslySetInnerHTML={{ 
-                __html: games[selectedGame - 1].iframe 
-              }}
-            />
+
+            {/* Game Container */}
+            <div className="flex-1 overflow-auto">
+              <div id="game-container" className="relative w-full aspect-video">
+                {/* 全屏控制按钮 */}
+                <div className="absolute top-4 right-4 z-10">
+                  <button
+                    onClick={handleFullscreen}
+                    className="bg-gray-900 bg-opacity-50 hover:bg-opacity-75 p-2 rounded-lg transition-all duration-200 group"
+                  >
+                    {isFullscreen ? (
+                      <>
+                        <Minimize2 className="w-5 h-5 text-white" />
+                        <span className="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">
+                          Exit Fullscreen
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <Maximize2 className="w-5 h-5 text-white" />
+                        <span className="absolute right-full mr-2 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 whitespace-nowrap">
+                          Fullscreen
+                        </span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* Game iframe */}
+                <div className="w-full h-full">
+                  <div dangerouslySetInnerHTML={{ __html: games[selectedGame - 1].iframe }} className="w-full h-full" />
+                </div>
+              </div>
+
+              {/* Game Instructions */}
+              <div className="p-6 bg-gray-900">
+                {/* Controls Section */}
+                <div className="mb-6">
+                  <h4 className="text-xl font-bold mb-4">Controls:</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="bg-gray-800 p-2 rounded">
+                        <span className="text-gray-400">↑↓←→</span>
+                      </div>
+                      <span className="text-gray-300">DRIVING</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="bg-gray-800 px-3 py-2 rounded">
+                        <span className="text-gray-400">N</span>
+                      </div>
+                      <span className="text-gray-300">NITRO</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <div className="bg-gray-800 px-3 py-2 rounded">
+                        <span className="text-gray-400">C</span>
+                      </div>
+                      <span className="text-gray-300">CHANGE CAMERA</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Game Description */}
+                <div>
+                  <h4 className="text-xl font-bold mb-4">About {games[selectedGame - 1].title}:</h4>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    {games[selectedGame - 1].description}
+                  </p>
+                  <div className="mt-4">
+                    <h5 className="font-bold mb-2">Key Features:</h5>
+                    <ul className="list-disc list-inside text-gray-300">
+                      {games[selectedGame - 1].features.map((feature, index) => (
+                        <li key={index} className="mb-1">{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Blog Section */}
-      <section id="blog" className="py-20">
+      {/* Latest Blogs Section */}
+      <section className="py-16 bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold mb-12 text-center">Latest News</h2>
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-white">Latest Blogs</h2>
+            <Link 
+              to="/blog" 
+              className="text-red-500 hover:text-red-400 flex items-center"
+            >
+              View All <ChevronRight className="w-4 h-4 ml-1" />
+            </Link>
+          </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
-              <div key={index} className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-transform">
-                <img src={post.image} alt={post.title} className="w-full h-48 object-cover" />
+            {blogPosts.map(post => (
+              <Link 
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                className="bg-gray-900 rounded-lg overflow-hidden hover:bg-gray-700 transition-colors"
+              >
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-48 object-cover"
+                />
                 <div className="p-6">
-                  <span className="inline-block px-3 py-1 bg-red-500 rounded-full text-sm mb-4">
-                    {post.category}
-                  </span>
-                  <h3 className="text-xl font-bold mb-2">{post.title}</h3>
-                  <p className="text-gray-400">{post.date}</p>
-                  <Link 
-                    to={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="mt-4 text-red-500 hover:text-red-400 flex items-center"
-                  >
+                  <div className="text-sm text-gray-400 mb-2">
+                    {post.date} • {post.category}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">{post.title}</h3>
+                  <div className="flex items-center text-red-500 hover:text-red-400">
                     Read More <ChevronRight className="w-4 h-4 ml-1" />
-                  </Link>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

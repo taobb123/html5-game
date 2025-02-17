@@ -9,49 +9,61 @@ function Terms() {
         <div className="space-y-8 text-gray-400">
           <section>
             <h2 className="text-2xl font-bold text-white mb-4">1. Acceptance of Terms</h2>
-            <p>By accessing and using Street Racers, you agree to be bound by these Terms of Service and all applicable laws and regulations.</p>
+            <p>By accessing and using Street Racer, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, please do not use our service.</p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">2. User Accounts</h2>
-            <p className="mb-4">When creating an account, you agree to:</p>
+            <h2 className="text-2xl font-bold text-white mb-4">2. Service Description</h2>
+            <p className="mb-4">Street Racer provides:</p>
             <ul className="list-disc list-inside ml-4 space-y-2">
-              <li>Provide accurate and complete information</li>
-              <li>Maintain the security of your account</li>
-              <li>Accept responsibility for all activities under your account</li>
-              <li>Not share your account credentials</li>
+              <li>Browser-based racing games</li>
+              <li>Free-to-play gaming experience</li>
+              <li>No account requirements</li>
+              <li>No data collection</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">3. Game Rules and Fair Play</h2>
-            <p className="mb-4">Users must:</p>
+            <h2 className="text-2xl font-bold text-white mb-4">3. User Conduct</h2>
+            <p className="mb-4">Users agree to:</p>
             <ul className="list-disc list-inside ml-4 space-y-2">
-              <li>Play fairly and not use cheats or exploits</li>
-              <li>Respect other players</li>
-              <li>Not engage in disruptive behavior</li>
-              <li>Report bugs and exploits to our team</li>
+              <li>Use the service for lawful purposes only</li>
+              <li>Not attempt to disrupt the service</li>
+              <li>Not exploit bugs or glitches</li>
+              <li>Not use cheats or automation tools</li>
+              <li>Respect other users' gaming experience</li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-2xl font-bold text-white mb-4">4. Intellectual Property</h2>
-            <p>All content, including games, graphics, and code, is the property of Street Racers and protected by copyright laws.</p>
+            <p>All content on Street Racer is protected by intellectual property rights and may not be copied, modified, or distributed without permission.</p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">5. Termination</h2>
-            <p>We reserve the right to terminate or suspend accounts that violate these terms or engage in inappropriate behavior.</p>
+            <h2 className="text-2xl font-bold text-white mb-4">5. Disclaimer of Warranties</h2>
+            <p className="mb-4">Street Racer is provided "as is" without any warranties:</p>
+            <ul className="list-disc list-inside ml-4 space-y-2">
+              <li>We don't guarantee uninterrupted service</li>
+              <li>Games may not work on all devices or browsers</li>
+              <li>Performance may vary based on your hardware</li>
+              <li>Features may change without notice</li>
+            </ul>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-white mb-4">6. Changes to Terms</h2>
-            <p>We may modify these terms at any time. Continued use of the service after changes constitutes acceptance of new terms.</p>
+            <h2 className="text-2xl font-bold text-white mb-4">6. Changes to Service</h2>
+            <p className="mb-4">We reserve the right to:</p>
+            <ul className="list-disc list-inside ml-4 space-y-2">
+              <li>Modify or discontinue any feature</li>
+              <li>Update games and content</li>
+              <li>Change technical requirements</li>
+              <li>Alter these terms at any time</li>
+            </ul>
           </section>
 
-          <section>
-            <h2 className="text-2xl font-bold text-white mb-4">7. Contact</h2>
-            <p>For questions about these terms, please contact us at terms@streetracers.com</p>
+          <section className="border-t border-gray-800 pt-8 mt-12">
+            <p className="text-sm">Last updated: February 15, 2025</p>
           </section>
         </div>
       </div>
