@@ -15,14 +15,24 @@ import Navigation from '../components/Navigation';
 import { Link } from 'react-router-dom';
 import { getAllPosts } from '../blog-posts';
 
+interface Game {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+  features: string[];
+  isNew: boolean;
+  iframe: string;
+}
+
 function Home() {
   const [selectedGame, setSelectedGame] = useState<number | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showAllGames, setShowAllGames] = useState(false);
 
-  const games = [
+  const games: Game[] = [
     {
-      id: 'racing-horizon',
+      id: 1,
       title: 'Racing Horizon',
       image: '/racing-horizon.jpg',
       description: 'Navigate through heavy traffic, earn money for upgrades, and enjoy thrilling police chases in this 3D racing game.',
@@ -32,9 +42,10 @@ function Home() {
         'Realistic 3D Graphics',
       ],
       isNew: true,
+      iframe: '<iframe src="https://www.gameflare.com/embed/racing-horizon/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
     },
     {
-      id: 'turbo-racing-3',
+      id: 2,
       title: 'Turbo Racing 3',
       image: '/night-city-racing-cover.avif',
       description: 'Race through the streets of Shanghai in this thrilling 3D racing game. Navigate through traffic and compete to be the best.',
@@ -44,9 +55,10 @@ function Home() {
         'Turbo Boost (X)',
       ],
       isNew: true,
+      iframe: '<iframe src="https://www.gameflare.com/embed/turbo-racing-3/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
     },
     {
-      id: 'buggy-racing',
+      id: 3,
       title: 'Buggy Off-Road Racing',
       image: '/buggf-off-load.webp',
       description: 'Race through rugged terrains across Europe, USA, and Australia. Drive a high-powered buggy through treacherous tracks.',
@@ -56,6 +68,7 @@ function Home() {
         'Intense Off-Road Action',
       ],
       isNew: true,
+      iframe: '<iframe src="https://play.gamepix.com/4x4-buggy-offroad-racing/embed?sid=80268" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
     },
     {
       id: 4,
@@ -81,6 +94,9 @@ function Home() {
   const displayedGames = showAllGames ? games : featuredGames;
 
   const blogPosts = getAllPosts().slice(0, 3); // 只获取最新的3篇文章
+
+  // 找到选中的游戏
+  const selectedGameData = selectedGame ? games.find(game => game.id === selectedGame) : null;
 
   // 处理全屏
   const handleFullscreen = () => {
@@ -223,7 +239,7 @@ function Home() {
             {/* Header */}
             <div className="flex justify-between items-center p-4 border-b border-gray-700">
               <h3 className="text-xl font-bold text-white">
-                {games[selectedGame - 1].title}
+                {selectedGameData?.title}
               </h3>
               <div className="flex items-center space-x-2">
                 <button
@@ -287,7 +303,7 @@ function Home() {
 
                 {/* Game iframe */}
                 <div className="w-full h-full">
-                  <div dangerouslySetInnerHTML={{ __html: games[selectedGame - 1].iframe }} className="w-full h-full" />
+                  <div dangerouslySetInnerHTML={{ __html: selectedGameData?.iframe || '' }} className="w-full h-full" />
                 </div>
               </div>
 
@@ -320,14 +336,14 @@ function Home() {
 
                 {/* Game Description */}
                 <div>
-                  <h4 className="text-xl font-bold mb-4">About {games[selectedGame - 1].title}:</h4>
+                  <h4 className="text-xl font-bold mb-4">About {selectedGameData?.title}:</h4>
                   <p className="text-gray-300 leading-relaxed mb-4">
-                    {games[selectedGame - 1].description}
+                    {selectedGameData?.description}
                   </p>
                   <div className="mt-4">
                     <h5 className="font-bold mb-2">Key Features:</h5>
                     <ul className="list-disc list-inside text-gray-300">
-                      {games[selectedGame - 1].features.map((feature, index) => (
+                      {selectedGameData?.features.map((feature, index) => (
                         <li key={index} className="mb-1">{feature}</li>
                       ))}
                     </ul>
