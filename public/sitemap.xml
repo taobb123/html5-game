@@ -18,6 +18,12 @@
 
   <!-- 博客文章 -->
   <url>
+    <loc>https://streetracer.online/blog/best-racing-browser-games</loc>
+    <lastmod>2025-02-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://streetracer.online/blog/evolution-of-browser-racing-games</loc>
     <lastmod>2025-02-15</lastmod>
     <changefreq>monthly</changefreq>
