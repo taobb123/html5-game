@@ -78,7 +78,7 @@ function Home() {
       image: "/drift-king.webp",
       features: ["Drift Mechanics", "Car Tuning", "Global Leaderboards"],
       isNew: false,
-      iframe: '<iframe src="https://www.gameflare.com/embed/dream-car-racing-2/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      iframe: '<iframe src="https://www.gameflare.com/embed/3d-formula-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
     },
     {
       id: 5,
