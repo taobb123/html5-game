@@ -8,7 +8,8 @@ import {
   Menu,
   X,
   Maximize2,
-  Minimize2
+  Minimize2,
+  ChevronDown
 } from 'lucide-react';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
@@ -72,21 +73,30 @@ function Home() {
     },
     {
       id: 4,
-      title: "Drift King",
+      title: "up-hill-racing-2",
       description: "Master the art of drifting in this high-octane racing game.",
-      icon: <Car className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1600",
+      image: "/drift-king.webp",
       features: ["Drift Mechanics", "Car Tuning", "Global Leaderboards"],
-      iframe: '<iframe src="https://www.crazygames.com/embed/drift-king" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      isNew: false,
+      iframe: '<iframe src="https://www.gameflare.com/embed/up-hill-racing-2" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
     },
     {
       id: 5,
-      title: "Rally Champion",
+      title: "gun-racing",
       description: "Take on challenging off-road tracks in various weather conditions.",
-      icon: <Car className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1541348263662-e068662d82af?w=1600",
+      image: "/rally-champion.webp",
       features: ["Weather System", "Track Editor", "Championship Mode"],
-      iframe: '<iframe src="https://www.crazygames.com/embed/rally-champion" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      isNew: false,
+      iframe: '<iframe src="https://www.gameflare.com/embed/gun-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+    },
+    {
+      id: 6,
+      title: "Speed Demons",
+      description: "High-speed street racing with intense police chases.",
+      image: "/speed-demons.webp",
+      features: ["Police Chases", "City Environment", "Car Collection"],
+      isNew: false,
+      iframe: '<iframe src="https://www.gameflare.com/embed/3d-city-2-player-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
     }
   ];
 
@@ -194,7 +204,6 @@ function Home() {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    {game.icon}
                     <h3 className="text-xl font-bold ml-2">{game.title}</h3>
                   </div>
                   <p className="text-gray-400 mb-4">{game.description}</p>
@@ -217,18 +226,18 @@ function Home() {
             ))}
           </div>
 
-          {/* 移除或注释掉 View More Games 按钮部分 */}
-          {/* {!showAllGames && games.length > 3 && (
-            <div className="text-center mt-12">
+          {/* View More Button - 只在未显示全部游戏时显示 */}
+          {!showAllGames && games.length > 3 && (
+            <div className="flex justify-center mt-8">
               <button
                 onClick={() => setShowAllGames(true)}
-                className="bg-red-500 hover:bg-red-600 px-8 py-3 rounded-full font-bold transition-colors inline-flex items-center"
+                className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full transition duration-200 flex items-center space-x-2"
               >
-                View More Games
-                <ChevronRight className="w-5 h-5 ml-2" />
+                <span>View More</span>
+                <ChevronDown className="w-4 h-4" />
               </button>
             </div>
-          )} */}
+          )}
         </div>
       </section>
 
