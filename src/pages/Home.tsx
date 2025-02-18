@@ -42,7 +42,7 @@ function Home() {
         'Realistic 3D Graphics',
       ],
       isNew: true,
-      iframe: '<iframe src="https://www.gameflare.com/embed/racing-go/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      iframe: '<iframe src="https://www.gameflare.com/embed/cartoon-mini-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
     },
     {
       id: 2,
