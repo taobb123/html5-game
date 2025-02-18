@@ -24,6 +24,7 @@ interface Game {
   features: string[];
   isNew: boolean;
   iframe: string;
+  controls: { key: string; action: string }[];
 }
 
 function Home() {
@@ -40,10 +41,32 @@ function Home() {
       features: [
         'Cartoon Style Graphics',
         'Multiple Race Tracks',
-        'Simple Controls',
+        'Simple Controls'
       ],
       isNew: true,
-      iframe: '<iframe src="https://www.gameflare.com/embed/cartoon-mini-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      iframe: '<iframe src="https://www.gameflare.com/embed/cartoon-mini-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>',
+      controls: [
+        {
+          key: "←↓↑→",
+          action: "DRIVING"
+        },
+        {
+          key: "H",
+          action: "RESET"
+        },
+        {
+          key: "P",
+          action: "PAUSE"
+        },
+        {
+          key: "WASD",
+          action: "DRIVING"
+        },
+        {
+          key: "C",
+          action: "RESET"
+        }
+      ]
     },
     {
       id: 2,
@@ -56,7 +79,17 @@ function Home() {
         'Turbo Boost (X)',
       ],
       isNew: true,
-      iframe: '<iframe src="https://www.gameflare.com/embed/turbo-racing-3/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      iframe: '<iframe src="https://www.gameflare.com/embed/turbo-racing-3/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>',
+      controls: [
+        {
+          key: "Arrow Keys",
+          action: "DRIVING"
+        },
+        {
+          key: "X",
+          action: "TURBO"
+        }
+      ]
     },
     {
       id: 3,
@@ -69,34 +102,90 @@ function Home() {
         'Intense Off-Road Action',
       ],
       isNew: true,
-      iframe: '<iframe src="https://play.gamepix.com/4x4-buggy-offroad-racing/embed?sid=80268" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      iframe: '<iframe src="https://play.gamepix.com/4x4-buggy-offroad-racing/embed?sid=80268" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>',
+      controls: [
+        {
+          key: "Arrow Keys",
+          action: "DRIVING"
+        },
+        {
+          key: "N",
+          action: "nitro"
+        }
+      ]
     },
     {
       id: 4,
-      title: "up-hill-racing-2",
-      description: "Master the art of drifting in this high-octane racing game.",
-      image: "/drift-king.webp",
-      features: ["Drift Mechanics", "Car Tuning", "Global Leaderboards"],
+      title: "3D Formula Racing",
+      description: "Race your F1 car to the finish line with the best time. No damage system, pure racing fun!",
+      image: "/3d-formula.jpg",
+      features: [
+        "Formula 1 Racing",
+        "Time Trial Mode",
+        "Multiple Tracks"
+      ],
       isNew: false,
-      iframe: '<iframe src="https://www.gameflare.com/embed/3d-formula-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      iframe: '<iframe src="https://www.gameflare.com/embed/3d-formula-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>',
+      controls: [
+        {
+          key: "Arrow Keys",
+          action: "DRIVING"
+        },
+        {
+          key: "SPACE",
+          action: "BRAKE"
+        }
+      ]
     },
     {
       id: 5,
-      title: "gun-racing",
-      description: "Take on challenging off-road tracks in various weather conditions.",
-      image: "/rally-champion.webp",
-      features: ["Weather System", "Track Editor", "Championship Mode"],
+      title: "Uphill Climb Racing 3",
+      description: "Race through challenging levels with obstacles, collect coins for upgrades, and use nitro to catch up with opponents.",
+      image: "/uphill-climb.webp",
+      features: [
+        "Obstacle Courses",
+        "Vehicle Upgrades",
+        "Nitro System"
+      ],
       isNew: false,
-      iframe: '<iframe src="https://www.gameflare.com/embed/uphill-climb-racing-3/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      iframe: '<iframe src="https://www.gameflare.com/embed/uphill-climb-racing-3/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>',
+      controls: [
+        {
+          key: "Arrow Keys",
+          action: "DRIVING"
+        },
+        {
+          key: "SPACE",
+          action: "HANDBRAKE"
+        },
+        {
+          key: "SHIFT",
+          action: "TURBO"
+        }
+      ]
     },
     {
       id: 6,
-      title: "Speed Demons",
-      description: "High-speed street racing with intense police chases.",
-      image: "/speed-demons.webp",
-      features: ["Police Chases", "City Environment", "Car Collection"],
+      title: "3D City 2 Player Racing",
+      description: "Race through city streets with a friend in split-screen mode. Multiple cars and realistic city environment!",
+      image: "/3d-city.jpg",
+      features: [
+        "2 Player Split-screen",
+        "City Street Racing",
+        "Multiple Cars"
+      ],
       isNew: false,
-      iframe: '<iframe src="https://www.gameflare.com/embed/3d-city-2-player-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
+      iframe: '<iframe src="https://www.gameflare.com/embed/3d-city-2-player-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>',
+      controls: [
+        {
+          key: "←↓↑→",
+          action: "DRIVING"
+        },
+        {
+          key: "WASD",
+          action: "DRIVING"
+        }
+      ]
     }
   ];
 
@@ -318,28 +407,18 @@ function Home() {
 
               {/* Game Instructions */}
               <div className="p-6 bg-gray-900">
-                {/* Controls Section */}
+                {/* Game Controls Section */}
                 <div className="mb-6">
                   <h4 className="text-xl font-bold mb-4">Controls:</h4>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-gray-800 p-2 rounded">
-                        <span className="text-gray-400">WASD</span>
+                    {games[selectedGame - 1].controls.map((control, index) => (
+                      <div key={index} className="flex items-center space-x-3">
+                        <div className="bg-gray-800 p-2 rounded">
+                          <span className="text-gray-400">{control.key}</span>
+                        </div>
+                        <span className="text-gray-300">{control.action}</span>
                       </div>
-                      <span className="text-gray-300">Movement</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-gray-800 px-3 py-2 rounded">
-                        <span className="text-gray-400">SPACE</span>
-                      </div>
-                      <span className="text-gray-300">Brake</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="bg-gray-800 px-3 py-2 rounded">
-                        <span className="text-gray-400">R</span>
-                      </div>
-                      <span className="text-gray-300">Reset Car</span>
-                    </div>
+                    ))}
                   </div>
                 </div>
 
