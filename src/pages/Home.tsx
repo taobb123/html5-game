@@ -33,13 +33,13 @@ function Home() {
   const games: Game[] = [
     {
       id: 1,
-      title: 'Racing Horizon',
-      image: '/racing-horizon.jpg',
-      description: 'Navigate through heavy traffic, earn money for upgrades, and enjoy thrilling police chases in this 3D racing game.',
+      title: 'Cartoon Mini Racing',
+      image: '/cartoon-mini-game.webp',
+      description: 'Race through colorful cartoon tracks with mini cars. Compete against other players in this fun and exciting racing game.',
       features: [
-        '4 Exciting Game Modes',
-        'Car Upgrades System',
-        'Realistic 3D Graphics',
+        'Cartoon Style Graphics',
+        'Multiple Race Tracks',
+        'Simple Controls',
       ],
       isNew: true,
       iframe: '<iframe src="https://www.gameflare.com/embed/cartoon-mini-racing/" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>'
@@ -315,21 +315,21 @@ function Home() {
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div className="flex items-center space-x-3">
                       <div className="bg-gray-800 p-2 rounded">
-                        <span className="text-gray-400">↑↓←→</span>
+                        <span className="text-gray-400">WASD</span>
                       </div>
-                      <span className="text-gray-300">DRIVING</span>
+                      <span className="text-gray-300">Movement</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="bg-gray-800 px-3 py-2 rounded">
-                        <span className="text-gray-400">N</span>
+                        <span className="text-gray-400">SPACE</span>
                       </div>
-                      <span className="text-gray-300">NITRO</span>
+                      <span className="text-gray-300">Brake</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="bg-gray-800 px-3 py-2 rounded">
-                        <span className="text-gray-400">C</span>
+                        <span className="text-gray-400">R</span>
                       </div>
-                      <span className="text-gray-300">CHANGE CAMERA</span>
+                      <span className="text-gray-300">Reset Car</span>
                     </div>
                   </div>
                 </div>
