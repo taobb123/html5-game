@@ -2,7 +2,7 @@
 
 A modern, responsive web template for creating a gaming portal with iframe game embedding, blog system, and SEO optimization. Built with React, TypeScript, and Tailwind CSS.
 
-![landing page](landing_page.png)
+![landing page](banner.png)
 
 ## ✨ Features
 
