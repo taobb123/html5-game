@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热门休闲小游戏 - 免费在线畅玩</title>
+    <meta name="description" content="畅玩热门休闲小游戏，无需下载，随时随地在线体验。智能AI自动生成游戏介绍，助力流量变现，提升用户体验。">
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #4CAF50;
+            --background-color: #f8f9fa;
+            --text-color: #2c3e50;
+            --accent-color: #FF6B6B;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--background-color);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            padding: 32px 24px 24px 24px;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .game-intro {
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px 24px;
+            margin-bottom: 28px;
+            font-size: 1.1em;
+            color: var(--text-color);
+            border-radius: 0 8px 8px 0;
+            animation: fadeIn 1s ease;
+        }
+
+        .iframe-wrapper {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #222;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 18px;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 4px 20px rgba(108, 99, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .iframe-wrapper:hover {
+            transform: scale(1.01);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .keywords {
+            margin-top: 18px;
+            color: var(--secondary-color);
+            font-size: 0.98em;
+            text-align: center;
+            padding: 12px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 8px;
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 12px;
+                margin: 15px;
+            }
+            .game-intro {
+                font-size: 1em;
+                padding: 12px 16px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bubble Loop - 经典泡泡射击游戏</h1>
+        <div class="game-intro" id="game-intro">
+            <!-- AI生成的游戏介绍文案将显示在这里 -->
+        </div>
+        <div class="iframe-wrapper">
+            <!-- 嵌套第三方游戏iframe -->
+            <iframe src="https://cdn.bubbleshooter.net/games/bubble-loop/" width="800" height="600" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="keywords" id="keywords">
+            <!-- AI生成的关键词将显示在这里 -->
+        </div>
+    </div>
+    <script>
+        // AI工具自动生成关键词和游戏介绍文案（示例实现）
+        function generateGameIntroAndKeywords() {
+            // 这里可以集成AI接口，以下为示例静态内容
+            const intro = `《Bubble Loop》是一款经典的泡泡射击游戏，玩家需要瞄准并射击彩色泡泡，将相同颜色的泡泡连接起来消除。游戏画面精美，玩法简单却极具挑战性，适合各个年龄段的玩家。无需下载，立即在线体验这款休闲益智游戏！`;
+            const keywords = `关键词：Bubble Loop、泡泡射击、休闲游戏、益智游戏、在线小游戏、免费畅玩、消除游戏`;
+
+            document.getElementById('game-intro').innerText = intro;
+            document.getElementById('keywords').innerText = keywords;
+        }
+
+        // 页面加载后自动生成
+        window.onload = generateGameIntroAndKeywords;
+    </script>
+</body>
+</html>
