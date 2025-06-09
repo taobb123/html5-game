@@ -3,154 +3,789 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>热门休闲小游戏 - 免费在线畅玩</title>
-    <meta name="description" content="畅玩热门休闲小游戏，无需下载，随时随地在线体验。智能AI自动生成游戏介绍，助力流量变现，提升用户体验。">
+    <title>GameHub - HTML5游戏平台</title>
+    <meta name="description" content="发现并玩转顶级HTML5游戏，支持云存档、社交分享和跨平台体验">
+    <meta name="keywords" content="HTML5游戏,免费游戏,在线游戏,小游戏,手机游戏">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #6C63FF;
-            --secondary-color: #4CAF50;
-            --background-color: #f8f9fa;
-            --text-color: #2c3e50;
-            --accent-color: #FF6B6B;
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --dark: #2d3436;
+            --light: #f7f9fc;
+            --accent: #00cec9;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --danger: #ff7675;
         }
-
-        body {
-            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
-            background: var(--background-color);
+        
+        * {
             margin: 0;
             padding: 0;
-            color: var(--text-color);
-            transition: all 0.3s ease;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            padding: 32px 24px 24px 24px;
-            transform: translateY(0);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        
+        /* 头部导航 */
+        header {
+            background: rgba(10, 10, 20, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
-
-        h1 {
-            text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            font-size: 2.2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            animation: fadeInDown 0.8s ease;
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
         }
-
-        .game-intro {
-            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
-            border-left: 4px solid var(--primary-color);
-            padding: 20px 24px;
-            margin-bottom: 28px;
-            font-size: 1.1em;
-            color: var(--text-color);
-            border-radius: 0 8px 8px 0;
-            animation: fadeIn 1s ease;
+        
+        .logo i {
+            color: var(--accent);
         }
-
-        .iframe-wrapper {
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
             width: 100%;
-            aspect-ratio: 16/9;
-            background: #222;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 18px;
-            border: 2px solid var(--primary-color);
-            box-shadow: 0 4px 20px rgba(108, 99, 255, 0.2);
-            transition: transform 0.3s ease;
         }
-
-        .iframe-wrapper:hover {
-            transform: scale(1.01);
+        
+        .user-actions {
+            display: flex;
+            gap: 1rem;
         }
-
-        iframe {
-            width: 100%;
-            height: 100%;
+        
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
             border: none;
-            display: block;
+            outline: none;
         }
-
-        .keywords {
-            margin-top: 18px;
-            color: var(--secondary-color);
-            font-size: 0.98em;
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5d4de0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(162, 155, 254, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            padding: 5rem 5%;
             text-align: center;
-            padding: 12px;
-            background: rgba(76, 175, 80, 0.1);
-            border-radius: 8px;
-            animation: fadeIn 1.2s ease;
+            background: radial-gradient(circle at top right, rgba(108, 92, 231, 0.2) 0%, transparent 40%);
+            position: relative;
+            overflow: hidden;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 206, 201, 0.05) 0%, transparent 70%);
+            z-index: -1;
         }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #6c5ce7, #00cec9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradient-shift 5s infinite alternate;
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #e0e0ff;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 3rem;
+            color: var(--accent);
+        }
+        
+        .tech-item span {
+            font-size: 0.9rem;
+            color: #b0b0ff;
+        }
+        
+        /* 游戏分类 */
+        .categories {
+            padding: 4rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+        
+        .section-title span {
+            color: var(--accent);
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .category-card {
+            background: rgba(30, 30, 50, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(108, 92, 231, 0.2);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(108, 92, 231, 0.5);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* 热门游戏 */
+        .featured-games {
+            padding: 4rem 5%;
+            background: rgba(10, 15, 30, 0.7);
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .game-card {
+            background: rgba(40, 40, 60, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .game-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .game-thumbnail {
+            height: 200px;
+            width: 100%;
+            background: linear-gradient(45deg, #6c5ce7, #00cec9);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-thumbnail::after {
+            content: '预览图';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .game-info {
+            padding: 1.5rem;
+        }
+        
+        .game-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .game-rating {
+            color: var(--warning);
+        }
+        
+        .game-description {
+            color: #b0b0ff;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #8888cc;
+            font-size: 0.9rem;
+        }
+        
+        /* 功能亮点 */
+        .features {
+            padding: 4rem 5%;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: rgba(30, 30, 50, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 206, 201, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        /* SEO策略 */
+        .seo-section {
+            padding: 4rem 5%;
+            background: rgba(10, 15, 30, 0.7);
+        }
+        
+        .seo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .seo-card {
+            background: rgba(40, 40, 60, 0.8);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .seo-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: rgba(5, 5, 15, 0.95);
+            padding: 3rem 5%;
+            margin-top: 4rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #b0b0ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(108, 92, 231, 0.2);
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #8888cc;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
             }
         }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 16px 12px;
-                margin: 15px;
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
             }
-            .game-intro {
-                font-size: 1em;
-                padding: 12px 16px;
+            
+            .tech-item {
+                font-size: 2rem;
             }
-            h1 {
-                font-size: 1.8em;
+            
+            .section-title {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bubble Loop - 经典泡泡射击游戏</h1>
-        <div class="game-intro" id="game-intro">
-            <!-- AI生成的游戏介绍文案将显示在这里 -->
+    <!-- 头部导航 -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-gamepad"></i>
+            <span>GameHub</span>
         </div>
-        <div class="iframe-wrapper">
-            <!-- 嵌套第三方游戏iframe -->
-            <iframe src="https://cdn.bubbleshooter.net/games/bubble-loop/" width="800" height="600" frameborder="0" allowfullscreen></iframe>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="#"><i class="fas fa-th-large"></i> 游戏分类</a></li>
+                <li><a href="#"><i class="fas fa-fire"></i> 热门游戏</a></li>
+                <li><a href="#"><i class="fas fa-cloud"></i> 云存档</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> 社区</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <button class="btn btn-secondary"><i class="fas fa-sign-in-alt"></i> 登录</button>
+            <button class="btn btn-primary"><i class="fas fa-user-plus"></i> 注册</button>
         </div>
-        <div class="keywords" id="keywords">
-            <!-- AI生成的关键词将显示在这里 -->
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <h1>探索无限游戏世界</h1>
+        <p>GameHub提供海量HTML5游戏，无需下载，即点即玩！支持跨设备云存档，与好友分享游戏乐趣，体验顶级游戏引擎带来的震撼效果。</p>
+        <div class="hero-btns">
+            <button class="btn btn-primary"><i class="fas fa-play"></i> 开始游戏</button>
+            <button class="btn btn-secondary"><i class="fas fa-star"></i> 热门游戏</button>
         </div>
-    </div>
+        
+        <div class="tech-stack">
+            <div class="tech-item">
+                <i class="fab fa-react"></i>
+                <span>React</span>
+            </div>
+            <div class="tech-item">
+                <i class="fab fa-node-js"></i>
+                <span>Node.js</span>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-cube"></i>
+                <span>Cocos</span>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-bolt"></i>
+                <span>RealClip</span>
+            </div>
+            <div class="tech-item">
+                <i class="fas fa-database"></i>
+                <span>MongoDB</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏分类 -->
+    <section class="categories">
+        <h2 class="section-title">游戏<span>分类</span></h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h3>动作冒险</h3>
+                <p>刺激的战斗与惊险的冒险</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-chess"></i>
+                </div>
+                <h3>策略游戏</h3>
+                <p>考验智慧与战术布局</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-puzzle-piece"></i>
+                </div>
+                <h3>益智解谜</h3>
+                <p>挑战逻辑与思维能力</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <h3>赛车竞技</h3>
+                <p>极速狂飙与激情碰撞</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 热门游戏 -->
+    <section class="featured-games">
+        <h2 class="section-title">热门<span>游戏</span></h2>
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-thumbnail"></div>
+                <div class="game-info">
+                    <div class="game-title">
+                        <span>星际征服者</span>
+                        <span class="game-rating">
+                            <i class="fas fa-star"></i> 4.8
+                        </span>
+                    </div>
+                    <p class="game-description">在浩瀚宇宙中建立你的帝国，探索未知星系，征服敌对势力。</p>
+                    <div class="game-stats">
+                        <span><i class="fas fa-user"></i> 2.4M+</span>
+                        <span><i class="fas fa-play-circle"></i> Cocos引擎</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-thumbnail"></div>
+                <div class="game-info">
+                    <div class="game-title">
+                        <span>魔法学院</span>
+                        <span class="game-rating">
+                            <i class="fas fa-star"></i> 4.9
+                        </span>
+                    </div>
+                    <p class="game-description">成为强大的魔法师，学习古老咒语，对抗黑暗势力。</p>
+                    <div class="game-stats">
+                        <span><i class="fas fa-user"></i> 1.8M+</span>
+                        <span><i class="fas fa-play-circle"></i> RealClip引擎</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-card">
+                <div class="game-thumbnail"></div>
+                <div class="game-info">
+                    <div class="game-title">
+                        <span>极限竞速</span>
+                        <span class="game-rating">
+                            <i class="fas fa-star"></i> 4.7
+                        </span>
+                    </div>
+                    <p class="game-description">驾驶超级跑车，在全球赛道上展现你的驾驶技术。</p>
+                    <div class="game-stats">
+                        <span><i class="fas fa-user"></i> 3.1M+</span>
+                        <span><i class="fas fa-play-circle"></i> Cocos引擎</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能亮点 -->
+    <section class="features">
+        <h2 class="section-title">平台<span>特色</span></h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>跨平台体验</h3>
+                <p>使用Cocos Creator实现一次开发，多端发布。在PC、手机和平板上无缝切换游戏体验。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>云存档系统</h3>
+                <p>基于MongoDB的云存档功能，随时随地保存和恢复游戏进度，更换设备也不丢失进度。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>实时互动引擎</h3>
+                <p>RealClip低延迟渲染技术，确保多人游戏的实时交互体验，感受无缝连接的乐趣。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <h3>社交分享</h3>
+                <p>集成TikTok/Facebook社交API，轻松分享游戏成就，邀请好友一起游玩。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO策略 -->
+    <section class="seo-section">
+        <h2 class="section-title">SEO<span>优化策略</span></h2>
+        <div class="seo-grid">
+            <div class="seo-card">
+                <i class="fas fa-sitemap"></i>
+                <h3>动态站点地图</h3>
+                <p>XML动态生成，确保搜索引擎及时收录新游戏</p>
+            </div>
+            <div class="seo-card">
+                <i class="fas fa-feather-alt"></i>
+                <h3>原创内容</h3>
+                <p>游戏介绍原创度＞80%，提升内容质量</p>
+            </div>
+            <div class="seo-card">
+                <i class="fas fa-link"></i>
+                <h3>权威外链</h3>
+                <p>与游戏媒体合作建立高权威外链</p>
+            </div>
+            <div class="seo-card">
+                <i class="fas fa-search"></i>
+                <h3>语义分析</h3>
+                <p>关键词密度优化，覆盖用户搜索需求</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>关于GameHub</h3>
+                <p>我们致力于提供最优质的HTML5游戏体验，让玩家随时随地享受游戏乐趣。</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">热门游戏</a></li>
+                    <li><a href="#">新游戏</a></li>
+                    <li><a href="#">游戏分类</a></li>
+                    <li><a href="#">排行榜</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>支持</h3>
+                <ul class="footer-links">
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">云存档指南</a></li>
+                    <li><a href="#">常见问题</a></li>
+                    <li><a href="#">联系我们</a></li>
+                    <li><a href="#">反馈建议</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>合作伙伴</h3>
+                <ul class="footer-links">
+                    <li><a href="#">CrazyGames SDK</a></li>
+                    <li><a href="#">Poki SDK</a></li>
+                    <li><a href="#">Cocos Creator</a></li>
+                    <li><a href="#">RealClip引擎</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 GameHub HTML5游戏平台. 保留所有权利. 托管于Cloudflare Pages</p>
+            <p>使用技术: React + Node.js | 云存储: AWS S3 | 数据库: MongoDB</p>
+        </div>
+    </footer>
+
     <script>
-        // AI工具自动生成关键词和游戏介绍文案（示例实现）
-        function generateGameIntroAndKeywords() {
-            // 这里可以集成AI接口，以下为示例静态内容
-            const intro = `《Bubble Loop》是一款经典的泡泡射击游戏，玩家需要瞄准并射击彩色泡泡，将相同颜色的泡泡连接起来消除。游戏画面精美，玩法简单却极具挑战性，适合各个年龄段的玩家。无需下载，立即在线体验这款休闲益智游戏！`;
-            const keywords = `关键词：Bubble Loop、泡泡射击、休闲游戏、益智游戏、在线小游戏、免费畅玩、消除游戏`;
-
-            document.getElementById('game-intro').innerText = intro;
-            document.getElementById('keywords').innerText = keywords;
-        }
-
-        // 页面加载后自动生成
-        window.onload = generateGameIntroAndKeywords;
+        // 简单交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 滚动动画效果
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+            
+            // 设置初始状态
+            document.querySelectorAll('.category-card, .game-card, .feature-card, .seo-card').forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // 游戏卡片悬停效果增强
+            const gameCards = document.querySelectorAll('.game-card');
+            gameCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.boxShadow = '0 15px 30px rgba(108, 92, 231, 0.3)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+                });
+            });
+            
+            // 按钮悬停效果
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
     </script>
 </body>
 </html>
