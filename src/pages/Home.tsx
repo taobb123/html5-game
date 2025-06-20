@@ -35,9 +35,9 @@ function Home() {
   const games: Game[] = [
     {
       id: 1,
-      title: 'Cartoon Mini Racing',
-      image: '/cartoon-mini-game.webp',
-      description: 'Race through colorful cartoon tracks with mini cars. Compete against other players in this fun and exciting racing game.',
+      title: '你的游戏名',
+      image: '/你的封面图链接',
+      description: '你的简介.',
       features: [
         'Cartoon Style Graphics',
         'Multiple Race Tracks',
